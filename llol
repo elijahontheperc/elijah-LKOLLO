@@ -1,0 +1,108 @@
+#include <stdio.h>
+
+int main() {
+    double orng, apl, pr, bud;
+    char item;
+
+    //This is where the items that the Shopkeeper will see appear.
+    printf("***ITEM PROFILES***\n");
+    printf("A: Apple\n");
+    printf("O: Orange\n");
+    printf("P: Pears\n");
+    printf("********************\n\n");
+
+    //This is where the Shopkeeper inputs the prices of the items.
+    printf("*** SHOPKEEPER PANEL***\n");
+    printf("Please enter apple price: $");
+    scanf_s("%lf", &apl);
+    printf("Please enter orange price: $");
+    scanf_s("%lf", &orng);
+    printf("Please enter pear price: $");
+    scanf_s("%lf", &pr);
+    printf("***********************\n\n");
+
+    //These 2 input welcomes the customer 
+    printf("Hello dear customer and Welcome to the shop!\n\n");
+
+
+    printf("Here is today's item menu with today's prices!\n\n");
+
+    //This input shows the item menu alongside the prices that the Shopkeeper put
+    printf("***ITEM MENU***\n");
+    printf("Item Prices\n");
+    printf("A: £%.2lf\n", apl);
+    printf("O: £%.2lf\n", orng);
+    printf("P: £%.2lf\n", pr);
+    printf("***************\n\n");
+
+    //This is where the customer inputs their budget
+    printf("***CUSTOMER PANEL***\n");
+    printf("Please state your budget: $");
+    scanf_s("%lf", &bud);
+    printf("*********************\n\n");
+
+    //This is where the customer inputs the item they want to buy
+    printf("Which item would you like to purchase?\n");
+    printf("Press 'A' if you would like to purchase an apple!\nPress 'O' if you would like to purchase an orange!\nPress 'P' if you would like to purchase a pear!\n\n", apl, orng, pr);
+    printf("Please enter the item you want to purchase: ");
+    scanf_s(" %c", &item);
+
+    /*Here if the customer has a budget above the item they purchased, the item will be purchased & the remaining will be given back*/
+    switch (item) {
+    case 'A':
+        if (bud >= apl)
+        {
+            printf("Orange purchased!\n");
+            bud -= apl;
+            printf("****Remaining budget****\n");
+            printf("Remaining budget: %.2lf\n", bud);
+            printf("Thanks for shopping with us!");
+        }
+        //Here, if the budget is below the price of the item, the purchased gets failed and a message saying Insufficient funds pops up
+        else
+        {
+            printf("Purchase failed!\n");
+            printf("Insufficient funds!");
+            printf("Thanks for shopping with us!");
+        }
+        break;
+    case 'O':
+        if (bud >= orng)
+        {
+            printf("Apple purchased!\n");
+            bud -= orng;
+            printf("****Remaining budget****\n");
+            printf("Remaining budget: %.2lf\n", bud);
+            printf("Thanks for shopping with us!");
+        }
+        else
+        {
+            printf("Purchase failed!\n");
+            printf("Insufficient funds!");
+            printf("Thanks for shopping with us!");
+        }
+        break;
+    case 'P':
+        if (bud >= pr)
+        {
+            printf("Pear purchased!\n");
+            bud -= pr;
+            printf("remaining budget: %.2lf", bud);
+        }
+        else
+        {
+            printf("Purchase failed!!!\n");
+            printf("Insufficient funds!");
+            printf("Thanks for shopping with us!");
+        }
+        break;
+        //Here, If the item that the customer has input is not on the list, the program gets shut down and a message saying missing item pops up m
+    default:
+        printf("Purchase failed!\n");
+        printf("Missing item!");
+        printf("Thanks for shopping with us!");
+
+    }
+
+    return 0;
+}
